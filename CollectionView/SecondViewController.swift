@@ -27,7 +27,6 @@ class SecondViewController: UIViewController, UICollectionViewDelegateFlowLayout
         label.textAlignment = .Center
         label.numberOfLines = 1
         label.backgroundColor = .orangeColor()
-        label.text = categoryText
         self.view.addSubview(label)
         
         let layout = UICollectionViewFlowLayout()
@@ -41,6 +40,10 @@ class SecondViewController: UIViewController, UICollectionViewDelegateFlowLayout
         self.view.addSubview(collectionView)
     }
 
+    override func viewWillAppear(animated: Bool) {
+        label.text = categoryText
+    }
+    
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return brandArray.count
     }

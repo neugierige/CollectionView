@@ -9,10 +9,14 @@
 import UIKit
 
 class ThirdViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-
+    
     let categoryLabel = UILabel()
     let brandLabel = UILabel()
-    let labelHeight: CGFloat = 100
+    
+    let labelHeight: CGFloat = 40
+    let screenSize = UIScreen.mainScreen().bounds
+    
+    let path = NSBundle.mainBundle().pathForResource("colorPalette", ofType: "plist")
     
     var categoryText = String()
     var brandText = String()
@@ -35,17 +39,16 @@ class ThirdViewController: UIViewController, UICollectionViewDelegate, UICollect
         }
         
         categoryLabel.backgroundColor = .orangeColor()
-        categoryLabel.text = categoryText
         categoryLabel.frame = CGRectMake(0, navBarHeight, self.view.frame.width, labelHeight)
         
         brandLabel.backgroundColor = .greenColor()
-        brandLabel.text = brandText
         brandLabel.frame = CGRectMake(0, categoryLabel.frame.maxY, self.view.frame.width, labelHeight)
         
-        
         let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSizeMake(24, 25)
-        layout.sectionInset = UIEdgeInsets(top: 3, left: 0, bottom: 3, right: 0)
+        layout.itemSize = CGSizeMake(screenSize.width/10, (self.view.frame.height - brandLabel.frame.maxY)/16)
+        layout.sectionInset = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
+        layout.minimumLineSpacing = 0
+        layout.minimumInteritemSpacing = 0
         
         let colorPicker = UICollectionView(frame: CGRectMake(0, brandLabel.frame.maxY, self.view.frame.width, self.view.frame.height-labelHeight*2), collectionViewLayout: layout)
         colorPicker.backgroundColor = .whiteColor()
@@ -54,6 +57,11 @@ class ThirdViewController: UIViewController, UICollectionViewDelegate, UICollect
         colorPicker.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
         self.view.addSubview(colorPicker)
         
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        categoryLabel.text = categoryText
+        brandLabel.text = brandText
     }
     
     
@@ -92,18 +100,28 @@ class ThirdViewController: UIViewController, UICollectionViewDelegate, UICollect
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath) as UICollectionViewCell
         
-        var colorPalette: Array<String>
-        let path = NSBundle.mainBundle().pathForResource("colorPalette", ofType: "plist")
-        let pListArray = NSArray(contentsOfFile: path!)
+        //TO DO: change this to work with section / row
+        if tag < 159 {
+            tag += 1
+        }
+        cell.tag = tag
         
+        print("TAG IS \(tag)")
+        
+        var colorPalette: Array<String>
+        
+        let pListArray = NSArray(contentsOfFile: path!)
         if let colorPalettePlistFile = pListArray {
             colorPalette = colorPalettePlistFile as! [String]
-            let hexString = colorPalette[indexPath.row]
+            
+            print("TAG IS NOW \(tag)")
+            print("SECTION IS NOW \(indexPath.section)")
+            print("ROW IS NOW \(indexPath.row)")
+            let hexString = colorPalette[cell.tag]
             color = hexStringToUIColor(hexString)
         }
         
         cell.backgroundColor = color
-        
         return cell
     }
     
@@ -112,17 +130,18 @@ class ThirdViewController: UIViewController, UICollectionViewDelegate, UICollect
         var colorPalette: Array<String>
         
         // Get colorPalette array from plist file
-        let path = NSBundle.mainBundle().pathForResource("colorPalette", ofType: "plist")
         let pListArray = NSArray(contentsOfFile: path!)
-        
         if let colorPalettePlistFile = pListArray {
             colorPalette = colorPalettePlistFile as! [String]
             
             let cell: UICollectionViewCell  = collectionView.cellForItemAtIndexPath(indexPath)! as UICollectionViewCell
             let hexString = colorPalette[cell.tag]
             color = hexStringToUIColor(hexString)
-            self.view.backgroundColor = color
-            //delegate?.setButtonColor(color)
+            for item in self.view.subviews {
+                if let collection = item as? UICollectionView {
+                    collection.backgroundColor = color
+                }
+            }
         }
 
     }
