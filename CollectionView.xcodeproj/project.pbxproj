@@ -18,7 +18,6 @@
 		B1860B621D567E2C00E4EA93 /* ThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1860B611D567E2C00E4EA93 /* ThirdViewController.swift */; };
 		B1860B641D567E5700E4EA93 /* ClothingClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1860B631D567E5700E4EA93 /* ClothingClass.swift */; };
 		B1860B661D5688C600E4EA93 /* colorPalette.plist in Resources */ = {isa = PBXBuildFile; fileRef = B1860B651D5688C600E4EA93 /* colorPalette.plist */; };
-		B1860B681D5688F100E4EA93 /* ColorPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1860B671D5688F100E4EA93 /* ColorPickerViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,7 +55,6 @@
 		B1860B611D567E2C00E4EA93 /* ThirdViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThirdViewController.swift; sourceTree = "<group>"; };
 		B1860B631D567E5700E4EA93 /* ClothingClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClothingClass.swift; sourceTree = "<group>"; };
 		B1860B651D5688C600E4EA93 /* colorPalette.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = colorPalette.plist; sourceTree = "<group>"; };
-		B1860B671D5688F100E4EA93 /* ColorPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorPickerViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,7 +109,6 @@
 				B1860B331D564FA500E4EA93 /* MainViewController.swift */,
 				B1860B5F1D566E6A00E4EA93 /* SecondViewController.swift */,
 				B1860B611D567E2C00E4EA93 /* ThirdViewController.swift */,
-				B1860B671D5688F100E4EA93 /* ColorPickerViewController.swift */,
 				B1860B351D564FA500E4EA93 /* Main.storyboard */,
 				B1860B311D564FA500E4EA93 /* AppDelegate.swift */,
 				B1860B381D564FA500E4EA93 /* Assets.xcassets */,
@@ -277,7 +274,6 @@
 			files = (
 				B1860B601D566E6A00E4EA93 /* SecondViewController.swift in Sources */,
 				B1860B641D567E5700E4EA93 /* ClothingClass.swift in Sources */,
-				B1860B681D5688F100E4EA93 /* ColorPickerViewController.swift in Sources */,
 				B1860B341D564FA500E4EA93 /* MainViewController.swift in Sources */,
 				B1860B621D567E2C00E4EA93 /* ThirdViewController.swift in Sources */,
 				B1860B321D564FA500E4EA93 /* AppDelegate.swift in Sources */,

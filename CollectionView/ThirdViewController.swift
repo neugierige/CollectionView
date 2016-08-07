@@ -25,7 +25,6 @@ class ThirdViewController: UIViewController, UICollectionViewDelegate, UICollect
         super.viewDidLoad()
 
         self.view.backgroundColor = .whiteColor()
-        
         let navBarHeight = self.navigationController!.navigationBar.frame.maxY
         
         let labels = [categoryLabel, brandLabel]
@@ -45,8 +44,8 @@ class ThirdViewController: UIViewController, UICollectionViewDelegate, UICollect
         
         
         let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSizeMake(18, 20)
-        layout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        layout.itemSize = CGSizeMake(24, 25)
+        layout.sectionInset = UIEdgeInsets(top: 3, left: 0, bottom: 3, right: 0)
         
         let colorPicker = UICollectionView(frame: CGRectMake(0, brandLabel.frame.maxY, self.view.frame.width, self.view.frame.height-labelHeight*2), collectionViewLayout: layout)
         colorPicker.backgroundColor = .whiteColor()
@@ -99,12 +98,11 @@ class ThirdViewController: UIViewController, UICollectionViewDelegate, UICollect
         
         if let colorPalettePlistFile = pListArray {
             colorPalette = colorPalettePlistFile as! [String]
-            let hexString = colorPalette[cell.tag]
+            let hexString = colorPalette[indexPath.row]
             color = hexStringToUIColor(hexString)
         }
         
         cell.backgroundColor = color
-        cell.tag = indexPath.row
         
         return cell
     }
