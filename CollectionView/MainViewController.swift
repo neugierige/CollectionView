@@ -35,7 +35,7 @@ class MainViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
         collectionView.dataSource = self
         collectionView.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
         collectionView.backgroundColor = UIColor.whiteColor()
-        self.view.addSubview(collectionView)
+        self.view.addSubview(collectionView) 
         
     }
 

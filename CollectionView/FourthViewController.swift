@@ -13,10 +13,10 @@ class FourthViewController: UIViewController {
     let categoryLabel = UILabel()
     let brandLabel = UILabel()
     let colorLabel = UILabel()
+    let switchLabel = UILabel()
     var mySwitch = UISwitch()
     
     var color = UIColor()
-    
     
     let labelHeight: CGFloat = 40
     
@@ -26,7 +26,7 @@ class FourthViewController: UIViewController {
         let labelWidth: CGFloat = self.view.frame.width
         let navBarHeight = self.navigationController!.navigationBar.frame.maxY
         
-        let labels = [categoryLabel, brandLabel, colorLabel]
+        let labels = [categoryLabel, brandLabel, colorLabel, switchLabel]
         for item in labels {
             item.textAlignment = .Center
             item.numberOfLines = 1
@@ -41,8 +41,13 @@ class FourthViewController: UIViewController {
         
         colorLabel.backgroundColor = color
         colorLabel.frame = CGRectMake(0, brandLabel.frame.maxY, labelWidth, labelHeight)
+        colorLabel.text = "Color"
         
-        mySwitch = UISwitch(frame: CGRect(x: (self.view.frame.midX-self.mySwitch.frame.width/2), y: colorLabel.frame.maxY+10, width: labelWidth, height: labelHeight))
+        switchLabel.frame = CGRectMake(0, colorLabel.frame.maxY+10, labelWidth/2, labelHeight)
+        switchLabel.textAlignment = .Right
+        switchLabel.text = "Good for work?"
+        
+        mySwitch = UISwitch(frame: CGRect(x: labelWidth/2+10, y: colorLabel.frame.maxY+10, width: labelWidth/2, height: labelHeight))
         self.view.addSubview(mySwitch)
         
     }

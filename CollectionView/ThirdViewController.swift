@@ -142,6 +142,8 @@ class ThirdViewController: UIViewController, UICollectionViewDelegate, UICollect
             for item in self.view.subviews {
                 if let collection = item as? UICollectionView {
                     collection.backgroundColor = color
+                    fourthVC.categoryLabel.text = categoryText
+                    fourthVC.brandLabel.text = brandText
                     fourthVC.color = color
                 }
             }
