@@ -17,7 +17,11 @@ class FourthViewController: UIViewController {
     var mySwitch = UISwitch()
     let doneButton = UIButton()
     
+    
+    var categoryText = String()
+    var brandText = String()
     var color = UIColor()
+    var switchValue = Bool()
     
     let labelHeight: CGFloat = 40
     
@@ -36,9 +40,11 @@ class FourthViewController: UIViewController {
         
         categoryLabel.backgroundColor = .orangeColor()
         categoryLabel.frame = CGRectMake(0, navBarHeight, labelWidth, labelHeight)
+        categoryLabel.text = categoryText
         
         brandLabel.backgroundColor = .greenColor()
         brandLabel.frame = CGRectMake(0, categoryLabel.frame.maxY, labelWidth, labelHeight)
+        brandLabel.text = brandText
         
         colorLabel.backgroundColor = color
         colorLabel.frame = CGRectMake(0, brandLabel.frame.maxY, labelWidth, labelHeight)
@@ -49,14 +55,27 @@ class FourthViewController: UIViewController {
         switchLabel.text = "Good for work?"
         
         mySwitch = UISwitch(frame: CGRect(x: labelWidth/2+10, y: colorLabel.frame.maxY+10, width: labelWidth/2, height: labelHeight))
+        if mySwitch.on {
+            switchValue = true
+        } else {
+            switchValue = false
+        }
         self.view.addSubview(mySwitch)
         
         doneButton.frame = CGRectMake(0, self.view.frame.maxY-labelHeight*2, labelWidth, labelHeight*2)
         doneButton.backgroundColor = .blueColor()
         doneButton.setTitleColor(.whiteColor(), forState: .Normal)
         doneButton.setTitle("DONE", forState: .Normal)
+        doneButton.addTarget(self, action: #selector(self.createClothing), forControlEvents: .TouchUpInside)
         self.view.addSubview(doneButton)
         
+    }
+    
+    func createClothing() {
+        let clothing = Clothing(category: categoryText, brand: brandText, color: color, work: switchValue)
+        print("THIS IS MY CLOTHING OBJECT")
+        print(clothing)
+        //TO DO: post this object to the database
     }
     
     
