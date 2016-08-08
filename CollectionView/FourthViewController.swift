@@ -15,6 +15,7 @@ class FourthViewController: UIViewController {
     let colorLabel = UILabel()
     let switchLabel = UILabel()
     var mySwitch = UISwitch()
+    let doneButton = UIButton()
     
     var color = UIColor()
     
@@ -49,6 +50,12 @@ class FourthViewController: UIViewController {
         
         mySwitch = UISwitch(frame: CGRect(x: labelWidth/2+10, y: colorLabel.frame.maxY+10, width: labelWidth/2, height: labelHeight))
         self.view.addSubview(mySwitch)
+        
+        doneButton.frame = CGRectMake(0, self.view.frame.maxY-labelHeight*2, labelWidth, labelHeight*2)
+        doneButton.backgroundColor = .blueColor()
+        doneButton.setTitleColor(.whiteColor(), forState: .Normal)
+        doneButton.setTitle("DONE", forState: .Normal)
+        self.view.addSubview(doneButton)
         
     }
     
