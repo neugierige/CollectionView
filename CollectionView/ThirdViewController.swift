@@ -20,6 +20,8 @@ class ThirdViewController: UIViewController, UICollectionViewDelegate, UICollect
     
     var categoryText = String()
     var brandText = String()
+    let fourthVC = FourthViewController()
+    
     
     //color picker variables
     var tag: Int = 0
@@ -140,10 +142,11 @@ class ThirdViewController: UIViewController, UICollectionViewDelegate, UICollect
             for item in self.view.subviews {
                 if let collection = item as? UICollectionView {
                     collection.backgroundColor = color
+                    fourthVC.color = color
                 }
             }
         }
-
+        self.navigationController?.showViewController(fourthVC, sender: self)
     }
 
 }
