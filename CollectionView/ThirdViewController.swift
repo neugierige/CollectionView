@@ -92,7 +92,7 @@ class ThirdViewController: UIViewController, UICollectionViewDelegate, UICollect
 
     
     internal func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return 9
     }
     
     internal func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
@@ -103,7 +103,7 @@ class ThirdViewController: UIViewController, UICollectionViewDelegate, UICollect
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath) as UICollectionViewCell
         
         //TO DO: change this to work with section / row
-        if tag < 159 {
+        if tag < 143 {
             tag += 1
         }
         cell.tag = tag
