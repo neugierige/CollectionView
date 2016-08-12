@@ -70,6 +70,11 @@ class FourthViewController: UIViewController {
         
     }
     
+    override func viewWillAppear(animated: Bool) {
+        colorLabel.backgroundColor = color
+    }
+    
+    
     func turnSwitch(sender: UISwitch!) {
         if mySwitch.on == true {
             switchValue = true
@@ -78,16 +83,18 @@ class FourthViewController: UIViewController {
         }
     }
     
-    override func viewWillAppear(animated: Bool) {
-        colorLabel.backgroundColor = color
-    }
-    
     func createClothing() {
         let clothing = Clothing(category: categoryText, brand: brandText, color: color, work: switchValue)
         print("THIS IS MY CLOTHING OBJECT")
         print(clothing.category)
         print(clothing.brand)
         print(clothing.work)
+        
+        var alert = UIAlertController(title: "Done.", message: "\(categoryText) from \(brandText) is saved", preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "woot!", style: UIAlertActionStyle.Default, handler: nil))
+        self.presentViewController(alert, animated: true) { 
+            
+        }
         //TO DO: post this object to the database
     }
     
