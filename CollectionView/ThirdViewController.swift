@@ -40,15 +40,15 @@ class ThirdViewController: UIViewController, UICollectionViewDelegate, UICollect
             self.view.addSubview(item)
         }
         
-        categoryLabel.backgroundColor = .orangeColor()
+        //categoryLabel.backgroundColor = .orangeColor()
         categoryLabel.frame = CGRectMake(0, navBarHeight, self.view.frame.width, labelHeight)
         
-        brandLabel.backgroundColor = .greenColor()
+        //brandLabel.backgroundColor = .greenColor()
         brandLabel.frame = CGRectMake(0, categoryLabel.frame.maxY, self.view.frame.width, labelHeight)
         
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSizeMake(screenSize.width/10, (self.view.frame.height - brandLabel.frame.maxY)/16)
-        layout.sectionInset = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
+        layout.sectionInset = UIEdgeInsets(top: 5, left: 10, bottom: 5, right: 10)
         layout.minimumLineSpacing = 0
         layout.minimumInteritemSpacing = 0
         
@@ -103,19 +103,28 @@ class ThirdViewController: UIViewController, UICollectionViewDelegate, UICollect
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath) as UICollectionViewCell
         
         //TO DO: change this to work with section / row
+        cell.tag = tag
         if tag < 143 {
             tag += 1
         }
-        cell.tag = tag
         
         print("TAG IS \(tag)")
+        
         
         var colorPalette: Array<String>
         
         let pListArray = NSArray(contentsOfFile: path!)
         if let colorPalettePlistFile = pListArray {
             colorPalette = colorPalettePlistFile as! [String]
-            
+            var section = 0
+            var row = 0
+            while row <= 16 {
+                while section <= 9 {
+                    //
+                    section += 1
+                }
+                row += 1
+            }
             print("TAG IS NOW \(tag)")
             print("SECTION IS NOW \(indexPath.section)")
             print("ROW IS NOW \(indexPath.row)")
@@ -142,13 +151,16 @@ class ThirdViewController: UIViewController, UICollectionViewDelegate, UICollect
             for item in self.view.subviews {
                 if let collection = item as? UICollectionView {
                     collection.backgroundColor = color
-                    fourthVC.categoryText = categoryText
-                    fourthVC.brandText = brandText
-                    fourthVC.color = color
                 }
             }
         }
         self.navigationController?.showViewController(fourthVC, sender: self)
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        fourthVC.categoryText = categoryText
+        fourthVC.brandText = brandText
+        fourthVC.color = color
     }
 
 }

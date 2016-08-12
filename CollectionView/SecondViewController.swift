@@ -11,7 +11,7 @@ import UIKit
 class SecondViewController: UIViewController, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
 
     let label = UILabel()
-    let labelHeight: CGFloat = 150
+    let labelHeight: CGFloat = 50
     let brandArray = ["GAP", "H&M", "Flea Market", "J.Crew", "Urban Outfitters", "American Eagle", "Lululemon", "Banana Republic", "Old Navy", "Express", "Uniqlo", "Don't Remember"]
     
     let thirdVC = ThirdViewController()
@@ -26,7 +26,7 @@ class SecondViewController: UIViewController, UICollectionViewDelegateFlowLayout
         label.frame = CGRectMake(0, (self.navigationController?.navigationBar.frame.maxY)!, self.view.frame.width, labelHeight)
         label.textAlignment = .Center
         label.numberOfLines = 1
-        label.backgroundColor = .orangeColor()
+        //label.backgroundColor = .orangeColor()
         self.view.addSubview(label)
         
         let layout = UICollectionViewFlowLayout()

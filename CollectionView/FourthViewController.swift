@@ -38,16 +38,18 @@ class FourthViewController: UIViewController {
             self.view.addSubview(item)
         }
         
-        categoryLabel.backgroundColor = .orangeColor()
+        //categoryLabel.backgroundColor = .orangeColor()
         categoryLabel.frame = CGRectMake(0, navBarHeight, labelWidth, labelHeight)
         categoryLabel.text = categoryText
         
-        brandLabel.backgroundColor = .greenColor()
+        //brandLabel.backgroundColor = .greenColor()
         brandLabel.frame = CGRectMake(0, categoryLabel.frame.maxY, labelWidth, labelHeight)
         brandLabel.text = brandText
         
         colorLabel.backgroundColor = color
         colorLabel.frame = CGRectMake(0, brandLabel.frame.maxY, labelWidth, labelHeight)
+        colorLabel.layer.borderColor = UIColor.blackColor().CGColor
+        colorLabel.layer.borderWidth = 3.0
         colorLabel.text = "Color"
         
         switchLabel.frame = CGRectMake(0, colorLabel.frame.maxY+10, labelWidth/2, labelHeight)
@@ -69,6 +71,10 @@ class FourthViewController: UIViewController {
         doneButton.addTarget(self, action: #selector(self.createClothing), forControlEvents: .TouchUpInside)
         self.view.addSubview(doneButton)
         
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        colorLabel.backgroundColor = color
     }
     
     func createClothing() {
