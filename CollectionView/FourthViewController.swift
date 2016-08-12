@@ -56,13 +56,10 @@ class FourthViewController: UIViewController {
         switchLabel.textAlignment = .Right
         switchLabel.text = "Good for work?"
         
-        mySwitch = UISwitch(frame: CGRect(x: labelWidth/2+10, y: colorLabel.frame.maxY+10, width: labelWidth/2, height: labelHeight))
-        if mySwitch.on {
-            switchValue = true
-        } else {
-            switchValue = false
-        }
+        self.mySwitch = UISwitch(frame: CGRect(x: labelWidth/2+10, y: colorLabel.frame.maxY+10, width: labelWidth/2, height: labelHeight))
         self.view.addSubview(mySwitch)
+        self.mySwitch.setOn(true, animated: true)
+        self.mySwitch.addTarget(self, action: #selector(self.turnSwitch(_:)), forControlEvents: .ValueChanged)
         
         doneButton.frame = CGRectMake(0, self.view.frame.maxY-labelHeight*2, labelWidth, labelHeight*2)
         doneButton.backgroundColor = .blueColor()
@@ -73,6 +70,14 @@ class FourthViewController: UIViewController {
         
     }
     
+    func turnSwitch(sender: UISwitch!) {
+        if mySwitch.on == true {
+            switchValue = true
+        } else {
+            switchValue = false
+        }
+    }
+    
     override func viewWillAppear(animated: Bool) {
         colorLabel.backgroundColor = color
     }
@@ -80,7 +85,9 @@ class FourthViewController: UIViewController {
     func createClothing() {
         let clothing = Clothing(category: categoryText, brand: brandText, color: color, work: switchValue)
         print("THIS IS MY CLOTHING OBJECT")
-        print(clothing)
+        print(clothing.category)
+        print(clothing.brand)
+        print(clothing.work)
         //TO DO: post this object to the database
     }
     
