@@ -11,11 +11,11 @@ import UIKit
 class Clothing {
     
     let category: String
-    let brand: String?
-    let color: UIColor
-    let work: Bool
+    let brand: String??
+    let color: UIColor?
+    let work: Bool?
     
-    init(category: String, brand: String?, color: UIColor, work: Bool) {
+    init(category: String, brand: String?, color: UIColor?, work: Bool?) {
         self.category = category
         self.brand = brand
         self.color = color

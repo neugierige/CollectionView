@@ -92,11 +92,11 @@ class ThirdViewController: UIViewController, UICollectionViewDelegate, UICollect
 
     
     internal func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 9
+        return 144
     }
     
     internal func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-        return 16
+        return 1
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
@@ -106,6 +106,8 @@ class ThirdViewController: UIViewController, UICollectionViewDelegate, UICollect
         cell.tag = tag
         if tag < 143 {
             tag += 1
+        } else if (tag == 143) {
+            tag = 0
         }
         
         print("TAG IS \(tag)")
