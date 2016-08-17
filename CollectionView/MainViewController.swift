@@ -8,7 +8,12 @@
 
 import UIKit
 
-class MainViewController: UIViewController, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
+class MainViewController:  UIViewController, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
+    
+    var array = []
+    let secondVC = SecondViewController()
+    var categoryText = String()
+    
     
     let screenWidth = UIScreen.mainScreen().bounds.size.width
     let screenHeight = UIScreen.mainScreen().bounds.size.height
@@ -17,9 +22,6 @@ class MainViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
     
     let bottomsArray = ["Shorts", "Capris", "Skirt", "Pencil Skirt", "Skinny jeans", "Bootleg Jeans", "Bellbottom Jeans", "Khakis", "Dress pants", "Wideleg", "Leggings"]
     
-    var array = []
-    
-    let secondVC = SecondViewController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,6 +66,14 @@ class MainViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         secondVC.categoryText = array[indexPath.row] as! String
         self.navigationController?.showViewController(secondVC, sender: self)
+        
+        //TO DO: how to make this object accessible to all other classes?
+        createClothingItem(array[indexPath.row] as! String)
+    }
+    
+    func createClothingItem(category: String) -> Clothing {
+        var clothingItem = Clothing(category: category, brand: nil, color: nil, work: nil)
+        return clothingItem
     }
     
     

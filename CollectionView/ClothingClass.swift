@@ -1,5 +1,5 @@
 //
-//  ClothingClass.swift
+//  Clothing.swift
 //  CollectionView
 //
 //  Created by Luyuan Xing on 8/6/16.
@@ -8,10 +8,10 @@
 
 import UIKit
 
-class Clothing {
+struct Clothing {
     
     let category: String
-    let brand: String??
+    let brand: String?
     let color: UIColor?
     let work: Bool?
     
@@ -21,7 +21,5 @@ class Clothing {
         self.color = color
         self.work = work
     }
-    
-    
     
 }
